@@ -36,6 +36,7 @@ CRingBuffer::CRingBuffer(unsigned int capacity) {
 CRingBuffer::~CRingBuffer() {
 
 	HeapFree(_heap, 0, _buffer);
+	HeapDestroy(_heap);
 }
 
 bool CRingBuffer::_push(unsigned int size, const char* buffer, int line, const wchar_t* sourceFileName) {
