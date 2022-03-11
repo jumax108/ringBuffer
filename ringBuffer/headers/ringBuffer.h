@@ -4,7 +4,7 @@
 #include <Windows.h>
 #include <time.h>
 
-#define push(size, buffer) _push(size, buffer, __LINE__, __FILEW__)
+#define pushBuffer(size, buffer) _pushBuffer(size, buffer, __LINE__, __FILEW__)
 
 class CRingBuffer {
 
@@ -13,9 +13,9 @@ public:
 	CRingBuffer(unsigned int capacity);
 	~CRingBuffer();
 
-	bool _push(unsigned int size, const char* buffer, int line, const wchar_t* sourceFileName);
-	bool pop(unsigned int size);
-	bool front(unsigned int size, char* buffer);
+	bool _pushBuffer(unsigned int size, const char* buffer, int line, const wchar_t* sourceFileName);
+	bool popBuffer(unsigned int size);
+	bool frontBuffer(unsigned int size, char* buffer);
 
 	inline int capacity() {
 		return _capacity;

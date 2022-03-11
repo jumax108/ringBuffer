@@ -39,7 +39,7 @@ CRingBuffer::~CRingBuffer() {
 	HeapDestroy(_heap);
 }
 
-bool CRingBuffer::_push(unsigned int size, const char* buffer, int line, const wchar_t* sourceFileName) {
+bool CRingBuffer::_pushBuffer(unsigned int size, const char* buffer, int line, const wchar_t* sourceFileName) {
 
 	unsigned int freeSize = getFreeSize();
 	if (freeSize < size) {
@@ -74,7 +74,7 @@ bool CRingBuffer::_push(unsigned int size, const char* buffer, int line, const w
 
 }
 
-bool CRingBuffer::pop(unsigned int size) {
+bool CRingBuffer::popBuffer(unsigned int size) {
 
 	unsigned int usedSize = getUsedSize();
 	if (usedSize < size) {
@@ -85,7 +85,7 @@ bool CRingBuffer::pop(unsigned int size) {
 	return true;
 }
 
-bool CRingBuffer::front(unsigned int size, char* buffer) {
+bool CRingBuffer::frontBuffer(unsigned int size, char* buffer) {
 
 	unsigned int usedSize = getUsedSize();
 	if (usedSize < size) {
