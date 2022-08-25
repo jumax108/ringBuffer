@@ -437,3 +437,13 @@ FodyWeavers.xsd
 
 
 *.dmp
+
+
+.vs/
+
+release/
+*.bat
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
