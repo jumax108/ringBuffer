@@ -13,7 +13,7 @@ public:
 	CRingBuffer(unsigned int capacity);
 	~CRingBuffer();
 
-	bool _pushBuffer(unsigned int size, const char* buffer, int line, const wchar_t* sourceFileName);
+	void _pushBuffer(unsigned int size, const char* buffer, int line, const wchar_t* sourceFileName);
 	bool popBuffer(unsigned int size);
 	bool frontBuffer(unsigned int size, char* buffer);
 
@@ -29,11 +29,13 @@ public:
 		return _front;
 	}
 
-	char* getDirectPush();
-	char* getDirectFront();
-
 	unsigned int getUsedSize();
 	unsigned int getFreeSize();
+
+
+	// ----- 링버퍼에 대한 직접적인 접근 -----
+	char* getDirectRear();
+	char* getDirectFront();
 
 	unsigned int getDirectFreeSize();
 	unsigned int getDirectUsedSize();
@@ -42,9 +44,7 @@ public:
 	bool moveRear(unsigned int);
 
 	char* getBufferStart(){return _buffer;}
-
-	char* getRearPtr(){return &_buffer[_rear];}
-	char* getFrontPtr(){return &_buffer[_front];}
+	// ----------------------------------------
 
 private:
 	
@@ -62,6 +62,8 @@ private:
 	unsigned int _rear;
 	unsigned int _front;
 
+	// ------ 로깅용 ------
 	wchar_t fileName[35];
+	// --------------------
 
 };

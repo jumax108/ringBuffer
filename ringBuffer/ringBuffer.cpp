@@ -32,7 +32,7 @@ CRingBuffer::~CRingBuffer() {
 
 }
 
-bool CRingBuffer::_pushBuffer(unsigned int size, const char* buffer, int line, const wchar_t* sourceFileName) {
+void CRingBuffer::_pushBuffer(unsigned int size, const char* buffer, int line, const wchar_t* sourceFileName) {
 
 	unsigned int freeSize = getFreeSize();
 	if (freeSize < size) {
@@ -63,7 +63,6 @@ bool CRingBuffer::_pushBuffer(unsigned int size, const char* buffer, int line, c
 	}
 
 	_rear = rearTemp;
-	return true;
 
 }
 
@@ -142,7 +141,7 @@ unsigned int  CRingBuffer::getUsedSize() {
 
 }
 
-char* CRingBuffer::getDirectPush() {
+char* CRingBuffer::getDirectRear() {
 	return &_buffer[_rear];
 }
 
