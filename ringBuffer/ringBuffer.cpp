@@ -10,17 +10,10 @@
 
 CRingBuffer::CRingBuffer(unsigned int capacity) {
 
-	_heap = HeapCreate(0, 0, 0);
-
 	_capacity = capacity;
 	_actualCap = _capacity + 1;
-	/*
-	* 여유 공간을 한 칸 두어서
-	* 완전히 버퍼가 비어있을때는 rear, front가 동일하고
-	* 버퍼에 데이터가 꽉 차있을 때는, rear와 front가 다르도록 하기 위함입니다.
-	* rear가 한 칸 뒤를 가르키기 때문에 capacity만큼 버퍼를 할당하면 +1 했을 때, front와 같아지게됨
-	*/
-	_buffer = (char*)HeapAlloc(_heap, HEAP_ZERO_MEMORY, _actualCap);
+
+	_buffer = (char*)malloc(_actualCap);
 
 	_rear = 0;
 	_front = 0;
@@ -35,8 +28,8 @@ CRingBuffer::CRingBuffer(unsigned int capacity) {
 
 CRingBuffer::~CRingBuffer() {
 
-	HeapFree(_heap, 0, _buffer);
-	HeapDestroy(_heap);
+	free(_buffer);
+
 }
 
 bool CRingBuffer::_pushBuffer(unsigned int size, const char* buffer, int line, const wchar_t* sourceFileName) {

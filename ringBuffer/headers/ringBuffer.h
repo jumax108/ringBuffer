@@ -17,15 +17,15 @@ public:
 	bool popBuffer(unsigned int size);
 	bool frontBuffer(unsigned int size, char* buffer);
 
-	inline int capacity() {
+	inline int getCapacity() {
 		return _capacity;
 	}
 
-	inline int rear() {
+	inline int getRear() {
 		return _rear;
 	}
 
-	inline int front() {
+	inline int getFront() {
 		return _front;
 	}
 
@@ -54,15 +54,14 @@ private:
 
 	char* _buffer;
 
+	// 사용할 수 있는 buffer의 크기
 	unsigned int _capacity;
-	// capacity + 1, 실제로 할당받은 객체 수
+	// capacity + 1, 실제로 할당받은 버퍼 크기
 	unsigned int _actualCap;
 
 	unsigned int _rear;
 	unsigned int _front;
 
 	wchar_t fileName[35];
-
-	HANDLE _heap;
 
 };

@@ -3,7 +3,6 @@
 #include <thread>
 
 #include "../headers/ringBuffer.h"
-#pragma comment(lib, "../release/ringBuffer")
 
 char data[] = "1234567890 ";
 constexpr int len = 11;
@@ -35,7 +34,7 @@ unsigned __stdcall pushFunc(void* arg){
 
 		while(ringBuffer.getFreeSize() < pushSize);
 
-		ringBuffer.push(pushSize, data + pushedSize);
+		ringBuffer.pushBuffer(pushSize, data + pushedSize);
 
 		if(pushAbleSize == pushSize){
 			pushedSize = 0;
@@ -61,8 +60,8 @@ unsigned __stdcall popFunc(void* arg){
 
 		int popSize = ringBuffer.getUsedSize();
 
-		ringBuffer.front(popSize, buf);
-		ringBuffer.pop(popSize);
+		ringBuffer.frontBuffer(popSize, buf);
+		ringBuffer.popBuffer(popSize);
 
 		printf("%s",buf);
 
