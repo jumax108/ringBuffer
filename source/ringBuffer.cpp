@@ -1,4 +1,4 @@
-﻿#include "headers/ringBuffer.h"
+﻿#include "../headers/ringBuffer.h"
 
 #ifndef min
 	#define min(a, b) ((a)>(b)?(b):(a))
